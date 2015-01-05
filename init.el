@@ -24,11 +24,11 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(unless (require 'el-get nil t)
+(unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
-       "https://github.com/esindril/emacs/el-get/raw/master/el-get-install.el")
-    (end-of-buffer)
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
     (eval-print-last-sexp)))
 
 ;; now either el-get is `require'd already, or has been `load'ed by the
@@ -50,9 +50,9 @@
 		   (global-set-key (kbd "M-x") 'smex)
 		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
-   (:name magit				; git meets emacs and a binding
-	  :after (progn
-		   (global-set-key (kbd "C-x C-z") 'magit-status)))
+;;   (:name magit				; git meets emacs and a binding
+;;	  :after (progn
+;;		   (global-set-key (kbd "C-x C-z") 'magit-status)))
 
    (:name flx-ido                       ; flx-ido
 	  :type git
