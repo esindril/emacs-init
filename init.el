@@ -88,7 +88,7 @@
 (el-get 'sync my:el-get-packages)
 
 ;; enable the color-theme-solarized
-(load-theme  'solarized-dark t)
+(load-theme  'solarized t)
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen
