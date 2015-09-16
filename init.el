@@ -204,9 +204,6 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 
-;; save the files that are opened for next time
-(desktop-save-mode 1)
-
 ;; Enable formatting using Astyle in emacs
 (defun astyle-this-buffer (pmin pmax)
   (interactive "r")
@@ -214,3 +211,14 @@
 			   "astyle"                 ;; add options here...
 			   (current-buffer) t
 			   (get-buffer-create "*Astyle Errors*") t))
+
+;; save the files that are opened for next time in the same directory
+(setq my-path default-directory)
+(if (file-exists-p
+     (concat my-path ".emacs.desktop"))
+    (if (y-or-n-p "Read .emacs.desktop and add hook?")
+    (progn
+      (desktop-read my-path)
+      (add-hook 'kill-emacs-hook
+	    `(lambda ()
+	       (desktop-save ,my-path t))))))
