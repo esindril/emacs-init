@@ -63,6 +63,7 @@
 (setq
  my:el-get-packages
  '(el-get                               ; el-get is self-hosting
+   cmake-mode                           ; synatx highlighting for CMake files
    escreen                              ; screen for emacs, C-\ C-h
    switch-window                        ; takes over C-x o
    auto-complete                        ; complete as you type with overlays
